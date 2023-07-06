@@ -30,7 +30,7 @@ func main() {
 		ctx.JSON(http.StatusOK, map[string]string{"data": res})
 	})
 
-	_ = http.ListenAndServe(":3046", r)
+	_ = http.ListenAndServe(":10001", r)
 }
 
 func server(question string) (string, error) {

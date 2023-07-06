@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>提问页面</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 15vh;
+        }
+
+        .input-box {
+            width: 300px;
+            height: 50px;
+            font-size: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <input type="text" id="inputText" class="input-box">
+    <button onclick="sendRequest()">提问</button>
+</div>
+<div id="result" class="container"></div>
+
+<script>
+    function sendRequest() {
+        var inputText = document.getElementById("inputText").value;
+        var url = "http://localhost:10001/ai/query?message=" + encodeURIComponent(inputText);
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                // 将结果展示在页面中
+                var resultDiv = document.getElementById("result");
+                resultDiv.innerHTML = JSON.stringify(data["data"]);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
+</script>
+</body>
+</html>

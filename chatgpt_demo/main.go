@@ -14,8 +14,11 @@ func main() {
 	r := gin.Default()
 
 	r.GET("/ai/query", func(ctx *gin.Context) {
+		ctx.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+
 		message := ctx.Query("message")
 
+		fmt.Println(message)
 		res, err := server(message)
 		if err != nil {
 			ctx.Status(http.StatusBadRequest)
@@ -24,11 +27,10 @@ func main() {
 		}
 
 		fmt.Println(res)
-		ctx.Status(http.StatusOK)
-		_, _ = ctx.Writer.WriteString(res)
+		ctx.JSON(http.StatusOK, map[string]string{"data": res})
 	})
 
-	_ = http.ListenAndServe(":10001", r)
+	_ = http.ListenAndServe(":3046", r)
 }
 
 func server(question string) (string, error) {
@@ -66,7 +68,8 @@ func callChatGpt(messages []map[string]string) (string, error) {
 
 	// 设置API访问参数
 	apiURL := "https://api.openai.com/v1/chat/completions"
-	apiKey := "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"
+	//apiKey := "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"
+	apiKey := "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"
 
 	// 构建请求数据
 	data := map[string]interface{}{

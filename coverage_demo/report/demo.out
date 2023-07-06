@@ -1,0 +1,5 @@
+mode: set
+demo_test/coverage_demo/demo/coverage.go:5.14,9.10 4 1
+demo_test/coverage_demo/demo/coverage.go:17.2,18.20 2 1
+demo_test/coverage_demo/demo/coverage.go:9.10,12.3 2 1
+demo_test/coverage_demo/demo/coverage.go:12.8,15.3 2 0

@@ -21,9 +21,11 @@ func main() {
 	buf := &bytes.Buffer{}
 	// 使用默认配置，并设置密码
 	cfg := api.LoadConfiguration()
-	cfg.OwnerPW = "opw" // 拥有者密码
-	cfg.UserPW = "upw"  // 用户密码
-	err = api.Encrypt(f1, buf, cfg)
+	cfg.OwnerPW = "!@_/123*&#+A天天向上qs0-1sfk[]~df" // 拥有者密码
+	cfg.UserPW = "!@_/123*&#+A天天向上qs0-1sfk[]~dd"  // 用户密码
+
+	ori := bytes.NewReader([]byte{})
+	err = api.Encrypt(ori, buf, cfg)
 	if err != nil {
 		fmt.Println(err.Error())
 		return

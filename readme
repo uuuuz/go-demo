@@ -1,0 +1,22 @@
+
+
+
+
+trade_volume/rest：
+    dependson:
+        - cam
+            /
+            /code
+        - counterparty
+            /
+            /db
+            /kyc
+        - fund
+            /fundbase
+        - fundta
+        - ginh
+        - log
+        - rsc
+        - toc:
+            /user
+

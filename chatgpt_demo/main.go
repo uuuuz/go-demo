@@ -21,6 +21,7 @@ func main() {
 		fmt.Println(message)
 		res, err := server(message)
 		if err != nil {
+			fmt.Println(err)
 			ctx.Status(http.StatusBadRequest)
 			_, _ = ctx.Writer.WriteString("please retry!")
 			return

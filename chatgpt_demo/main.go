@@ -7,7 +7,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"io/ioutil"
 	"net/http"
-	"net/url"
 )
 
 func main() {
@@ -90,16 +89,17 @@ func callChatGpt(messages []map[string]string) (string, error) {
 	req.Header.Set("Content-Type", "application/json")
 
 	// 发送请求
-	if transport == nil {
-		proxyURL, err := url.Parse("http://127.0.0.1:7890")
-		if err != nil {
-			return "", err
-		}
-		transport = &http.Transport{
-			Proxy: http.ProxyURL(proxyURL),
-		}
-	}
-	client := http.Client{Transport: transport}
+	//if transport == nil {
+	//	proxyURL, err := url.Parse("http://127.0.0.1:7890")
+	//	if err != nil {
+	//		return "", err
+	//	}
+	//	transport = &http.Transport{
+	//		Proxy: http.ProxyURL(proxyURL),
+	//	}
+	//}
+	//client := http.Client{Transport: transport}
+	client := http.DefaultClient
 
 	res, err := client.Do(req)
 	if err != nil {

@@ -67,9 +67,10 @@ var transport *http.Transport
 func callChatGpt(messages []map[string]string) (string, error) {
 
 	// 设置API访问参数
-	apiURL := "https://api.openai.com/v1/chat/completions"
+	//apiURL := "https://api.openai.com/v1/chat/completions"
+	apiURL := "https://api.openai-sb.com/v1/chat/completions"
 	//apiKey := "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"
-	apiKey := "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"
+	apiKey := "sb-29b8d019e623a4b6e4dbbbd0dff3d9b78cc8dffd7fab6248"
 
 	// 构建请求数据
 	data := map[string]interface{}{
